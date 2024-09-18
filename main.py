@@ -1,6 +1,6 @@
 
-print ("Witamy w kalkulatorze. Wpisz działanie dodawania (+), odejmowania (-), mnożenia (*) lub dzielenia (/) wybranych liczb. Można wybrać tylko jedno działanie naraz")
-
+print ("Witamy w kalkulatorze. Można wykonać działanie dodawania (+), odejmowania (-), mnożenia (*) lub dzielenia (/) wybranych liczb. Można wybrać tylko jedno działanie naraz")
+print ("Aby poznać wynik zadanego działania, proszę podać całość naraz poniżej (np. 2+2")
 user_eq=input("Podaj swoje działanie: ")
 
 number_plus=user_eq.count("+")
@@ -16,8 +16,13 @@ def add(numbers):
 
 def sub(numbers):
     result = int(numbers[0])
+    count = 0
     for i in numbers:
-        result = result-int(i)
+        count += 1
+        if count == 1:
+            result = int(i)
+        else:
+            result = result - int(i)
     return result
 
 def mul(numbers):
