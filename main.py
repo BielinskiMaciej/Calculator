@@ -1,6 +1,6 @@
 
 print ("Witamy w kalkulatorze. Można wykonać działanie dodawania (+), odejmowania (-), mnożenia (*) lub dzielenia (/) wybranych liczb. Można wybrać tylko jedno działanie naraz")
-print ("Aby poznać wynik zadanego działania, proszę podać całość naraz poniżej (np. 2+2")
+print ("Aby poznać wynik zadanego działania, proszę podać całość naraz poniżej (np. 2+2)")
 user_eq=input("Podaj swoje działanie: ")
 
 number_plus=user_eq.count("+")
