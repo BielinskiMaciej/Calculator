@@ -1,58 +1,44 @@
+import re
 
-print ("Witamy w kalkulatorze. Można wykonać działanie dodawania (+), odejmowania (-), mnożenia (*) lub dzielenia (/) wybranych liczb. Można wybrać tylko jedno działanie naraz")
-print ("Aby poznać wynik zadanego działania, proszę podać całość naraz poniżej (np. 2+2)")
-user_eq=input("Podaj swoje działanie: ")
 
-number_plus=user_eq.count("+")
-number_minus=user_eq.count("-")
-number_div=user_eq.count("/")
-number_mul=user_eq.count("*")
 
-def add(numbers):
-    result = 0
-    for i in numbers:
-        result = result+int(i)
-    return result
 
-def sub(numbers):
-    result = int(numbers[0])
-    count = 0
-    for i in numbers:
-        count += 1
-        if count == 1:
-            result = int(i)
-        else:
-            result = result - int(i)
-    return result
 
-def mul(numbers):
-    result = 1
-    for i in numbers:
-        result = result*int(i)
-    return result
+def add(a,b):
+    return a+b
 
-def div(numbers):
-    result = 0
-    count=0
-    for i in numbers:
-        count+=1
-        if count==1:
-            result=int(i)
-        else:
-            result = result/int(i)
-    return result
+def sub(a,b):
+    return a-b
 
-if "+" in user_eq:
-    user_var = user_eq.split("+")
-    print (add(user_var))
-elif "-" in user_eq:
-    user_var = user_eq.split("-")
-    print(sub(user_var))
-elif "*" in user_eq:
-    user_var = user_eq.split("*")
-    print(mul(user_var))
-elif "/" in user_eq:
-    user_var = user_eq.split("/")
-    print(div(user_var))
-else:
-    print ("Nieznany symbol działania")
+def mul(a,b):
+    return a*b
+
+def div(a,b):
+    if b==0:
+        raise ZeroDivisionError("Dzielisz przez 0")
+    return a/b
+
+def calculating(equation):
+    equation=equation.replace(" ","")
+    equation_space = equation.replace("", " ")
+    equation_list=equation_space.split()
+    #tokens_o = re.findall(r'\d+\.?\d*|[+\-*/]', equation)
+    print (equation_list)
+
+
+while True:
+    print("Witamy w kalkulatorze. Można wykonać działanie dodawania (+), odejmowania (-), mnożenia (*) lub dzielenia (/) wybranych liczb. Można wybrać tylko jedno działanie naraz")
+    print ("Aby wyjść należy wpisać 'wyłącz'")
+    print("Aby poznać wynik zadanego działania, proszę podać całość naraz poniżej (np. 2+2)")
+
+    user_eq = input("Podaj swoje działanie: ")
+
+    if user_eq.lower() == 'wyłącz':
+        print("Wyłączanie...")
+        break
+
+    try:
+        result = calculating(user_eq)
+        print(f"Wynik: {result}")
+    except Exception as e:
+        print(f"Error: {e}")
