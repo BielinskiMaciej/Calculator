@@ -27,12 +27,16 @@ def calculating(equation):
     #print (equation_list)
     #merging together spliited numbers with more than one digit
     i = 0
+    #print ("Before merging")
+    #print(equation_list)
     while i < len(equation_list) - 1:
         if equation_list[i].isdigit() and equation_list[i + 1].isdigit():
             equation_list[i] = equation_list[i] + equation_list[i + 1]
             del equation_list[i + 1]
+            i-=1
         i += 1
-
+    #print("After merging")
+    #print(equation_list)
     #print (len(equation_list))
 
     #searching for multiplication and division
@@ -47,7 +51,7 @@ def calculating(equation):
             equation_list[i-1]=div_result
             del equation_list[i:i+2]
         i+=1
-    print(equation_list)
+    #print(equation_list)
     #looking for addition and subtraction
     i = 0
     while i < len(equation_list):
@@ -60,7 +64,7 @@ def calculating(equation):
             equation_list[i - 1] = sub_result
             del equation_list[i:i + 2]
         i += 1
-    print(equation_list)
+    #print(equation_list)
     return equation_list[0]
 
 while True:
